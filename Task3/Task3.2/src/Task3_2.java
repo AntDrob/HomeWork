@@ -66,17 +66,25 @@ public class Task3_2 {
 			outputText.append(html.substring(end, start));
 			
 			end = lowerCaseHtml.indexOf(">", start);
-			int start1 = lowerCaseHtml.indexOf("=", start);
 			
-			if ((start1 != -1) && (start1 < end) && (html.charAt(start1 + 1) != '"')) {
-				start1 += 1;
-				outputText.append(html.substring(start, start1)).append("\"");
-				int varEnd = Math.min(lowerCaseHtml.indexOf(" ", start1), end);
-				outputText.append(html.substring(start1, varEnd)).append("\"").append(html.substring(varEnd, end));
+			int start1 = lowerCaseHtml.indexOf("=", start);
+			int varEnd = start;
+			if ((start1 != -1) && (start1 < end)) {
+				while ((start1 != -1) && (start1 < end)) {
+					if (html.charAt(start1 + 1) != '"') {
+						outputText.append(html.substring(varEnd, start1 + 1)).append("\"");
+						varEnd = Math.min(lowerCaseHtml.indexOf(" ", start1 + 1), end);
+						outputText.append(html.substring(start1 + 1, varEnd)).append("\"");
+					}
+					start1 = lowerCaseHtml.indexOf("=", start1 + 1);
+				}
+				outputText.append(html.substring(varEnd, end));
 			} else {
 				outputText.append(html.substring(start, end));
 			}
+			System.out.println(outputText.toString());
 		}
+
 		System.out.println("\nf) Пофикшенные теги: ");
 		System.out.println(outputText.toString());
 	}
