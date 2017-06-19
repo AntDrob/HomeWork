@@ -82,7 +82,6 @@ public class Task3_2 {
 			} else {
 				outputText.append(html.substring(start, end));
 			}
-			System.out.println(outputText.toString());
 		}
 
 		System.out.println("\nf) Пофикшенные теги: ");
