@@ -1,0 +1,171 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Сколько останется после выплаты штрафов?</title>
+
+<style>
+body {
+	color: #888;
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 18pt;
+}
+
+.content {
+	width: 700px;
+	margin: 10px auto;
+}
+
+h1 {
+	padding: 10px;
+	margin-bottom: 0px;
+}
+
+h6 {
+	margin: 0;
+	text-align: center;
+}
+
+h6 a {
+	font-style: italic;
+	font-weight: normal;
+	font-size: 15px;
+}
+
+.task {
+	padding: 10px;
+}
+
+form {
+	padding: 20px;
+	width: 100%;
+	border: 1px solid #ddd;
+}
+
+select {
+	font-size: 20pt;
+}
+
+input[type="text"] {
+	padding: 10px;
+	font-size: 18pt;
+	width: 50px;
+}
+
+#check {
+	width: 300px;
+	font-size: 20px;
+	height: 60px;
+	margin: 10px auto;
+}
+
+.success ul li {
+	list-style: none;
+}
+
+.holod {
+	text-decoration: underline;
+	font-style: italic;
+}
+
+.well {
+	color: #0f0;
+	background: url(images/well.png) no-repeat 5px;
+	padding-left: 30px;
+}
+
+.bad {
+	color: #f00;
+	background: url(images/fail.png) no-repeat 5px;
+	padding-left: 30px;
+}
+</style>
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+<script>
+	$(function() {
+		$('#check').click(
+				function() {
+					var moneyAmount = $('#moneyAmount').val();
+					var bribes = $('#bribes').val();
+					var documents = $('#documents').val();
+					var speed = $('#speed').val();
+					var alco = $('#alco').val();
+					var drugs = $('#drugs').val();
+					var tonning = $('#tonning').val();
+					var base = $('#base').val();
+					
+					var string = "moneyAmount=" + moneyAmount + "&bribes="
+							+ bribes + "&documents=" + documents
+							+ "&speed=" + speed + "&alco="
+							+ alco + "&drugs=" + drugs + "&tonning=" + tonning + "&base=" + base;
+					$('#result').load("/calculate?" + string);
+				});
+	});
+</script>
+</head>
+<body>
+
+	<div class="content">
+		<h1>Сколько останется после выплаты штрафов?</h1>
+		<div class="task">Введите ваши финансовые возможности и список
+			правонарушений</div>
+
+		<form>
+			<p>
+				Сколько у вас сейчас денег? <input type="text" id="moneyAmount">
+				руб.
+			</p>
+			<p>
+				Вы готовы давать взятки: <select id="bribes">
+					<option value="yes">Да</option>
+					<option value="no" selected="selected">Нет</option>
+				</select>
+			</p>
+
+			<p>
+				У вас есть корочка: <select id="documents">
+					<option value="yes">Да</option>
+					<option value="no" selected="selected">Нет</option>
+				</select>
+			</p>
+
+			</br>
+
+			<p>
+				Сколько раз вас ловили за привышение скорости? <input type="text"
+					id="speed" value="0">
+			</p>
+
+			<p>
+				Сколько раз вам выписывали штраф за тонировку? <input type="text"
+					id="tonning" value="0">
+			</p>
+
+			<p>
+				Сколько раз вам выписывали штраф за вождение в нетрезвом виде? <input
+					type="text" id="alco" value="0">
+			</p>
+
+			<p>
+				Сколько раз вам выписывали штраф за вождение в состоянии наркотического опъянения? <input type="text" id="drugs" value="0">
+			</p>
+			
+			<p>
+				Сколько раз ваc штрафовали просто так? <input type="text" id="base" value="0">
+			</p>
+
+		</form>
+
+		<button id="check">Проверить!</button>
+
+		<p>Результат:</p>
+
+		<div id="result">
+			<i>после нажатия на кнопку, появится тут</i>
+		</div>
+
+	</div>
+</body>
+</html>
