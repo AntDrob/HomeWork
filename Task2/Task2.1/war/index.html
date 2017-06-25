@@ -1,0 +1,35 @@
+
+
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>Hello App Engine</title>
+<script src="jquery-3.2.1.js"></script>
+</head>
+
+<script>
+ $( function() {
+ $('#calc').click( function() {
+ var var1 = $('#var1').val();
+var var2 = $('#var2').val();
+
+ $('#result').load( "/zadanie21?var1="+var1+"&var2="+var2);
+ } );
+ } );
+</script>
+
+<body>
+<body>
+	<form>
+		<p>Введите два числа:</p>
+		<input id="var1" type="text" /> 
+		<input id="var2" type="text" />
+	</form>
+	<button id="calc">Вычислить какое число ближе</button>
+	<p>
+		Ближайшее к десяти число: <b><span style="color: red" id="result"></span></b>
+	</p>
+</body>
+</body>
+
+</html>
